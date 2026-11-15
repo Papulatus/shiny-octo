@@ -86,3 +86,45 @@ cp -R deep-research-anything ~/.claude/skills/
 - 插件 API 可提供整页 UI 与后端操作，第三方插件等同代码执行，须审查后安装。
 - 付费搜索/模型调用会产生实际成本，建议设预算与速率上限。
 - 上游迭代极快（v2.0.0 → v2.2.0 三个月内），自建部署应锁定 tag，不要跟 `main`。
+
+
+## Marketing Skills（Corey Haines）— 营销策略、获客、文案与增长执行技能包
+
+| 字段 | 信息 |
+| --- | --- |
+| 官方上游 | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)，Corey Haines 维护 |
+| 官网与接入 | [marketing-skills.com](https://marketing-skills.com/) · [工具连接指南](https://github.com/coreyhaines31/marketingskills/blob/main/tools/SETUP.md) |
+| 许可证 | 已读根 LICENSE：MIT，© 2025 Corey Haines；第三方数据、账户、广告平台、图片/视频模型与服务收费另核 |
+| 技术形态 | Agent Skills Markdown、参考文档、模板与可选工具/CLI 集成；不是营销数据供应商或自动获得授权的广告投放服务 |
+| 收录快照 | 2026-11-14 CST；60,529 stars、8,823 forks；未归档 |
+| 维护快照 | 最新 Release v2.14.12（2026-11-11 UTC）；main 提交 `1f837447b20b`（2026-11-11 UTC）；递归实核 skills/ 下 53 个 SKILL.md |
+
+### 是什么
+
+给 Claude Code、Codex、Cursor 等 Agent 使用的营销工作手册集合，覆盖策略、转化优化（CRO）、文案、SEO/AI 搜索可见性、广告、分析归因、邮件与 B2B 外联、销售支持和增长。核心不是让模型泛泛写营销话术，而是先建立 `product-marketing` 产品上下文（目标客户 ICP、定位、竞争、品牌语气、客户原话），其他技能再按此工作。
+
+### 核心能力与适用场景
+
+- **策略与调研**：product-marketing、marketing-plan、customer-research、competitor-profiling、reverse-engineer-marketing、offers、pricing、launch、marketing-ideas/psychology。
+- **B2B 获客与销售**：prospecting、cold-email、sales-enablement、revops、events、co-marketing、public-relations；可用于出口企业目标客户画像、客户开发信、展会评估与销售资料，但公开资料不能代替有效采购线索。
+- **内容与搜索**：copywriting/editing、content-strategy、seo-audit、ai-seo、programmatic-seo、site-architecture、schema、link-building、aso。
+- **转化和留存**：cro、signup、onboarding、popups、paywalls、churn-prevention、referrals、lead-magnets、community-marketing、free-tools。
+- **渠道与测量**：ads、ad-creative、emails、sms、social、analytics、attribution、conversion-tracking、ab-testing；image/video 技能指导素材工作流，**不附送图像模型权限、第三方订阅或投放预算**。
+- **持续工作流**：marketing-loops 可设计周期任务，但持续执行依赖宿主调度与授权；marketing-council 的多视角讨论不等于真实专家背书。
+
+### 推荐接入方式
+
+1. 上游支持 `npx skills add coreyhaines31/marketingskills --list` 先看清单，再按需选择：例如 `--skill product-marketing prospecting cold-email sales-enablement`。Claude Code 的非交互安装可显式指定 `-a claude-code`，避免只写入其他 Agent 使用的 `.agents/skills/`。Hermes 需按当前 Profile 的技能目录适配，不假设该 CLI 自动支持。
+2. 不需要把 53 个技能全部全局启用；先建立 `.agents/product-marketing.md` 并人工确认事实。营销计划默认有 `~/marketing-plans/<slug>/` 写入约定，采用前检查与自己的项目存储规范是否冲突，**未经同意不向家目录新建任务树**。
+3. 库自带 Claude Code / Codex 插件入口，也可使用技能目录与参考资料；安装插件不自动完成工具账号授权。`tools/SETUP.md` 要求先选单一工具与账户、最小 scope、先做只读结果，再决定是否开放写操作。
+4. 可选仓库 CLI 需要 Node ≥18；文档中的 `--env-file` 用法要求 Node ≥20.6。密钥使用已有 Secret/环境管理，不粘贴到聊天，不默认创建全套账号连接。
+
+### 安全、隐私、商业与效果边界
+
+- 对广告预算变更、邮件/短信发送、CRM 批量写入、网页发布、账号 OAuth 和自动任务分别授权；默认只读、草稿、测试账户及预算上限，不把“能运行 CLI”当作可花钱/可群发。
+- 客户访谈、CRM、转化标识、广告账户与产品上下文可能由宿主发给模型或第三方 API。先确认数据最小化、授权、脱敏、地域与保留策略；本地存 Markdown 不代表数据不外发。
+- 冷邮件、短信和 WhatsApp 的联系名单来源、同意/合法依据、退订、地区规则与平台条款需另核，不用于批量猜邮箱、刷量、垃圾信息或未经授权抓取个人资料。
+- 转化跟踪代码会影响网站行为与隐私；上线前核验 consent、重复上报、测试流量、归因口径和回滚方案。A/B 测试不因套用方法就自动统计显著。
+- README 有明确披露的商业合作伙伴，作者声称核心推荐不受赞助影响；这是上游声明而非本库独立审计结论，选择工具仍按需求、权限、成本和现有系统评估。
+- 主要面向技术营销与软件/创业产品，工业定制品的验证周期、渠道与订单模式需重新校准，不能直接套 SaaS 漏斗并承诺营收、SEO 排名或获客效果。
+- 本条只收录与审阅文档，不安装技能、不接营销账户、不发送邮件或投放广告。
