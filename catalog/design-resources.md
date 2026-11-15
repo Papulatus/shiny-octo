@@ -498,3 +498,105 @@ npx skills add oil-oil/oil-ui
 - 已观察到 director frontmatter 的 `role` 键重复（specialist / orchestrator）；不同 YAML 解析器可能报错或覆盖，接入目标 Agent 前做 metadata/引用校验，不把“94 个目录存在”当作全部可加载的证明。
 - 复杂制作按截图和网格实测验收：面数、法线、UV、贴图、单位/轴向、蒙皮、LOD 与引擎导入都需检查；高数量技能不保证审美、速度或自动化稳定性。
 - 本条为文档与目录结构核验，未安装技能或 MCP、未启动 Blender、未实测自动建模。
+
+
+## img2threejs — 从参考图分阶段重建程序化 Three.js 模型
+
+| 字段 | 信息 |
+| --- | --- |
+| 上游 | [img2threejs/img2threejs](https://github.com/img2threejs/img2threejs) |
+| 许可证 | Apache-2.0（已读根 LICENSE）；参考图、第三方插件和生成服务另核授权。 |
+| 技术形态 | Agent Skill + Python 3.10+ 标准库工具 + Three.js 输出；安装 CLI 需 Node ≥18。 |
+| 收录快照 | 2026-11-16 CST；21,409 stars、1,820 forks；未归档；星标不代表质量认证 |
+| 维护快照 | 默认分支 main，提交 `0c0c49bc168e`（2026-11-05 UTC）；v2.0.1（2026-11-05 UTC） |
+
+### 是什么与核心能力
+
+已核实的上游是 `img2threejs/img2threejs`；用户线索 `img2threeis` 未核实为另一个项目，不作为第二条收录。通过 Agent 看图和写代码，输出程序化的 Three.js 对象/角色，以形体规格、部件层级、材质、枢轴与动作锚点组织模型。它是 reconstruction-by-code，**不是摄影测量、从照片直接提取网格，也不是自带图生三维模型权重**。
+
+用 `forge/next.py`、本地 `.img2threejs/state.json` 和证据门控组织 blockout → 结构/形体 → 材质/灯光 → 交互/优化；截图与参考逐步对照，约束修正次数。版本口径需分开：Skill/Release 为 2.0.1，仓库安装器 package.json 为 0.2.0，不能把后者写成模型版本。
+
+### 适合什么与接入
+
+适合网页三维原型、可拆解道具、风格化角色、产品视觉与游戏展示，不适合要求不可见面精确尺寸的工程反求。先看 [安装指南](https://github.com/img2threejs/img2threejs/blob/main/docs/INSTALL.md)。上游 `npx --yes img2threejs@latest install` 会维护共享 checkout 并给检测到的宿主建立链接，`doctor` 查看状态；**不要默认向全部宿主/Profile 写入**。Hermes installer 只处理默认技能目录，其他 Profile 必须明确授权再适配。generic/character 内置工作流与单独的 img2 插件管理器要区分，只有特定领域需要时才添加插件。
+
+### 安全与能力边界
+
+安装器会下载并改链接，执行的 Python/JS 与浏览器预览拥有宿主权限；先固定版本/提交、审查写入路径，避免在生产仓库直接安装或覆盖。参考图可能通过宿主视觉模型外发，本地状态文件不代表图片不外发；受保密约束的图片先确认模型通道。单图隐藏面、材质和比例存在推断，必须标明近似/风格化；验收靠实际截图和性能，不靠门控分数替代。未安装或实测生成。
+
+
+## Stageshow（Benji Taylor）— 产品界面插画、光标故事与营销动效 Skill
+
+| 字段 | 信息 |
+| --- | --- |
+| 上游 | [benjitaylor/skills](https://github.com/benjitaylor/skills)，Stageshow 位于 [stageshow/](https://github.com/benjitaylor/skills/tree/main/stageshow) |
+| 许可证 | 已读 stageshow/LICENSE：MIT，© 2026 Benji Taylor；NOTICE 中 App 图标不在 MIT 范围，品牌注册表资源有各自许可与商标边界。 |
+| 技术形态 | 仓库 benjitaylor/skills 内的 stageshow/；Agent Skill + React 18+ / CSS kit；预览需 Node ≥20.19。 |
+| 收录快照 | 2026-11-16 CST；3,354 stars、227 forks；未归档；星标不代表质量认证 |
+| 维护快照 | 默认分支 main，提交 `299140fafd08`（2026-11-05 UTC）；stageshow-v1.1.1（2026-11-05 UTC） |
+
+### 是什么与核心能力
+
+不是同名 showcase 或第三方搬运库；原始上游是 Benji Taylor 的 skills 仓库。为营销页、文档 hero、feature card 与 bento grid 制作像真实产品的“示意 UI”：窗口、手机、终端、仪表盘、通知、光标移动和点击反馈。提供可复制的 kit、示例、视觉规则、教学对照与录制验收工具。
+
+**这不是浏览器自动化**：`a.click()` 画出示意光标按下，`a.set()` 才改变演示状态，不能据此控制真实软件。它也不是完整业务组件基座；更适合展示“一个功能如何发生”的短动效。
+
+### 推荐接入
+
+`npx skills add benjitaylor/skills --skill stageshow` 按需安装；或在自己 React 项目复制 kit、相近示例及必要资产，再替换为自己的产品。kit 不依赖第三方动画运行时；预览用 Vite，录制用 playwright-core + 本机 Chrome/CHROME_PATH，部分示例需 lucide-react。先 typecheck/check:css，再用 film.mjs 验证桌面、窄屏、交互状态和 reduced motion，最后人工观看；与 BoardUI/Bencho 可分别选用，不把此条理解为推荐混搭设计语言。
+
+### 安全、许可与边界
+
+示意界面不可冒充真实产品功能、真实用户数据或实际执行结果；按 brief 明确是概念演示。MIT 不含第三方 App bundle 图标，品牌 SVG 还涉及 MIT/Apache-2.0/CC0 和官方品牌条款；照片按 PHOTOS.md，产品商标无背书授权。录制工具可访问指定 URL 并输出截图/视频，不用真实登录态或私密页面做默认测试。提供降动效和静态版本，验收移动端裁切、可读性和性能。本次只审阅源码说明与许可，未安装或渲染。
+
+
+## Godogen — Claude Code/Codex 驱动的多引擎游戏生成工作流
+
+| 字段 | 信息 |
+| --- | --- |
+| 上游 | [htdt/godogen](https://github.com/htdt/godogen) |
+| 许可证 | MIT（已读 LICENSE.md），© 2026 Alex Ermolov；引擎、模型、生成素材与 API 各自授权另核。 |
+| 技术形态 | 游戏项目生成器与 Agent 指南/素材技能；支持 Godot C#/GDScript、Bevy、Babylon.js、Three.js。 |
+| 收录快照 | 2026-11-16 CST；7,351 stars、688 forks；未归档；星标不代表质量认证 |
+| 维护快照 | 默认分支 master，提交 `40542b6c8efb`（2026-10-16 UTC）；未发现 GitHub Release |
+
+### 是什么与核心能力
+
+不是现成游戏合集，也不再仅限 Godot。流程是 godogen → 独立游戏 repo → 可运行游戏；发布时选择引擎和 Claude/Codex 宿主，生成薄运行目录（manifest、引擎指南、asset-gen）。Agent 编写游戏、生成素材、运行引擎，用 live URL 或视频证明效果并继续迭代。
+
+Godot 适合桌面 2D/3D，Bevy 对应 Rust/ECS，Babylon/Three.js 提供浏览器展示。素材默认路线引用独立 godogen_assets，本地生成要求 NVIDIA GPU；并不等于 Mac 即装即用。可选 Google/Gemini、xAI、Tripo 等付费服务处理图像、视频精灵、3D、语音和音乐，需要独立 key 与费用。
+
+### 适合什么与接入
+
+适合玩法原型、可交互网页游戏、自动化游戏制作流程研究。先读 setup.md，按选定引擎准备工具：Godot C# 需 .NET build/SDK，Bevy 需 Rust/Cargo，浏览器路线 Node ≥22.12，录制需 WebGL2 Chrome；Python、Blender、ffmpeg 等按任务准备，勿默认全部安装。
+
+在**新空目录**使用 `./publish.sh --engine babylon --agent codex --out <绝对项目路径>` 之类命令，阅读生成指南后再授权运行。`--force` 会清空目标已有内容，不能为省事自动加上。所谓 publish 在这里主要指生成游戏仓库布局，不是已授权公网部署。
+
+### 安全与能力边界
+
+Agent 可执行生成代码、启动服务器、下载模型和调用付费 API；限定目录、预算、时长与网络绑定，发布公网另确认。不因编译成功就宣称游戏可玩，应实际验证玩法、碰撞、输入、帧率和录制证据；上游自主开发和“免费本地”是流程描述而非本库验收。素材生成涉及参考图外发、肖像/版权与模型许可，分别核对；不默认购买服务、开放端口或无人值守长跑。本次未安装引擎或运行生成。
+
+
+## Anatomy — 交互式等轴测技术插画与 SVG/WebGL 解释型 Skill
+
+| 字段 | 信息 |
+| --- | --- |
+| 上游 | [wheresryan22/anatomy](https://github.com/wheresryan22/anatomy) |
+| 许可证 | MIT（已读根 LICENSE），© 2026 Ryan；概念事实与参考资料权利另核。 |
+| 技术形态 | 单个 Agent Skill + Node ≥20.10 内置模块工具 + SVG/HTML，可选 WebGL 与 beta 3D。 |
+| 收录快照 | 2026-11-16 CST；27,469 stars、2,324 forks；未归档；星标不代表质量认证 |
+| 维护快照 | 默认分支 main，提交 `1482e8469b0a`（2026-10-18 UTC）；v1.1.0（2026-10-12 UTC） |
+
+### 是什么与核心能力
+
+作者 ID 确认是 `wheresryan22`，不是凭后缀拼接仓库。将技术概念变成能操作的等轴测装置：实体感零件、分层遮挡、四色明暗、卡片说明、实时读数和克制的动效。例如锁芯解释缓存键、单绘图头解释共享 GPU 上下文；也有火箭发动机、波纹水槽与测量仪表示例。
+
+输出可为独立 HTML、内嵌样式 SVG 或 React/Next 组件；SVG+WebGL 模式画火焰、水、焦散和光照，部分 SVG 在无 WebGL 时仍可阅读；3D 转动部件为 beta，不应宣称通用三维 CAD。示例数值由同一个演示模型驱动，但这只说明内部一致，不证明真实物理精度。
+
+### 适合什么与接入
+
+适合解释技术架构、机械原理、教程插图和交互式产品叙事；与 Stageshow 的产品界面演示不同，也不是解剖医疗软件。上游命令 `npx skills add wheresryan22/anatomy -a codex` 可按项目安装，Codex 使用 `$anatomy`，Claude 使用 `/anatomy`；选择 -g 才是用户级安装，不默认全局。保留 kit、references、scripts 与示例相对关系。工具本身无需 API key，不意味着宿主模型免费；安装 CLI 版本要求可能高于工具的 Node 最低版本，先核对实际 CLI engines。
+
+### 安全、工程与边界
+
+脚本可启动浏览器、截图和写 HTML/JS，先在专用目录运行，生成页面不得默认访问生产账户或私密文件。宿主可能将参考图、技术资料发给外部视觉模型，提前确认保密边界。火箭、液压等图示只作解释，尺寸、工况与读数需专家/资料核验，不能替代制造图纸、仿真或安全计算。验证可访问性、键盘/触摸、reduced-motion、WebGL 降级及性能；未实际渲染或安装。
