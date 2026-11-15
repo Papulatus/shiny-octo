@@ -13,16 +13,16 @@
 | 类别 | 内容 |
 | --- | --- |
 | [金融 AI](catalog/financial-ai.md) | 市场时间序列、量化研究与金融基础模型 |
-| [量化研究与市场数据](catalog/quant-data.md) | A 股数据、行情 MCP、研究工程、回测/交易框架与时序数据库 |
-| [MCP、API 与 Agent 工具桥接](catalog/mcp-api-tools.md) | 将 MCP、OpenAPI 与 GraphQL 接入 CLI/Agent，以及代码与 schema 认知索引治理 |
+| [量化研究与市场数据](catalog/quant-data.md) | A 股数据、行情 MCP、研究工程、回测/交易框架与时序数据库；ZenTrade 美股研究与纸面交易 |
+| [MCP、API 与 Agent 工具桥接](catalog/mcp-api-tools.md) | 将 MCP、OpenAPI 与 GraphQL 接入 CLI/Agent，以及代码与 schema 认知索引治理；ClassCAD 参数化 CAD MCP |
 | [Agent 浏览器](catalog/agent-browser.md) | 可保留登录态的人机协作浏览器 |
 | [浏览器、网页 Agent 与自动化](catalog/browser-web-agent.md) | 网页内 Copilot、仓库/网站反向 Prompt、浏览器自动化运行时、沉浸式品牌页 Skill |
 | [网页采集](catalog/web-scraping.md) | 自适应解析、反爬与爬虫框架 |
 | [视觉 AI、CV 与办公](catalog/vision-office.md) | 多视角图像、服装/姿态参考图库、CV 工具箱、文档/表格/PPT 自动化、专利交底与知识管理 |
-| [设计资源](catalog/design-resources.md) | 图标库、React UI 组件库（BoardUI 源码型设计系统 / Bencho 交互与音效）、界面灵感素材、pixelfx 像素游戏特效与创作 Skill、Arjun Blender 三维制作 Skills |
+| [设计资源](catalog/design-resources.md) | 图标库、React UI 组件库（BoardUI 源码型设计系统 / Bencho 交互与音效）、界面灵感素材、pixelfx 像素游戏特效与创作 Skill、Arjun Blender 三维制作 Skills；img2threejs、Stageshow、Anatomy、Godogen |
 | [设计工程与 Agent Skills](catalog/design-resources.md) | UI 动效、交互审查、原型、多方向视觉探索与设计决策 Skills |
-| [资源目录与邮箱](catalog/resources-email.md) | 资源/API 发现和邮箱服务导航 |
-| [调研与研究 Skills](catalog/research-skills.md) | 多角度调研、论文评审与文献综述、咨询级报告、数据核对、仓库尽调（含本库维护的 Deep Research Anything）；Marketing Skills 营销、获客与增长工作流 |
+| [资源目录与邮箱](catalog/resources-email.md) | 资源/API 发现和邮箱服务导航；Open source games 游戏源码目录 |
+| [调研与研究 Skills](catalog/research-skills.md) | 多角度调研、论文评审与文献综述、咨询级报告、数据核对、仓库尽调（含本库维护的 Deep Research Anything）；Marketing Skills 营销、获客与增长工作流；Sparkling 业务共创研讨 |
 
 ## 收录原则
 
@@ -33,6 +33,13 @@
 5. 目录中的外部链接是研究入口，不是安全、质量、版权、可用性或商业授权保证。
 
 ## 当前重点收录
+
+- **游戏源码与生成**：[Open source games](catalog/resources-email.md) 按类型找游戏源码；[Godogen](catalog/design-resources.md) 生成多引擎游戏项目，两者不等于免费素材授权。
+- **三维重建与解释型视觉**：[img2threejs](catalog/design-resources.md) 从参考图写程序化模型；[Anatomy](catalog/design-resources.md) 做 SVG/WebGL 等轴测技术插画。
+- **产品展示动效**：[Stageshow](catalog/design-resources.md)，React/CSS 示意 UI 与光标演示，不控制真实应用。
+- **业务研讨**：[Sparkling](catalog/research-skills.md)，带材料与证据共创判断；AGPL-3.0-only，非自动研究替代品。
+- **参数化工程建模**：[ClassCAD AI](catalog/mcp-api-tools.md)，MCP/Skill MIT，几何引擎商用与导出权限按套餐。
+- **美股研究工作台**：[ZenTrade](catalog/quant-data.md)，纸面交易与受限 API/MCP；第三方策略含混合/非商用许可。
 
 - **营销与获客**：[Marketing Skills（Corey Haines）](catalog/research-skills.md)，53 个策略、SEO、文案、B2B 外联与增长技能；工具账号与广告/群发权限另行授权。
 
