@@ -1,19 +1,19 @@
 # 目录
 
-> 数据快照：2026-08-05。项目活跃度、星标、版本、许可证和 API 兼容性会变化，请在采用前核验上游文档与条款。
+> 各条目独立记录数据快照；本批新增条目核验于 2026-11-16。项目活跃度、星标、版本、许可证和 API 兼容性会变化，请在采用前核验上游文档与条款。
 
 | 分类 | 条目 | 适用场景 |
 | --- | --- | --- |
 | [金融 AI](catalog/financial-ai.md) | Kronos、FinRL | K线/量价序列预测、金融时间序列研究、金融强化学习实验与回测原型 |
-| [量化研究与市场数据](catalog/quant-data.md) | A-Stock Data、stock-api、TA-Lib Python、PineTS、LLMQuant Hermes、QuantSpace、Lumibot、WorldQuant Miner、Vibe-Trading、QuestDB TSP（tick-stock-panel）、| A 股数据、MCP 行情、技术指标、AI 投研、研究工程、回测与受控交易连接器 |
-| [MCP、API 与 Agent 工具桥接](catalog/mcp-api-tools.md) | mcp2cli、AOCI-CODE、Agent Lightning | 将受信任的 MCP、OpenAPI、GraphQL 发现并受限地转为 CLI/Agent 工具、Agent 训练基础设施 |
+| [量化研究与市场数据](catalog/quant-data.md) | A-Stock Data、stock-api、TA-Lib Python、PineTS、LLMQuant Hermes、QuantSpace、Lumibot、WorldQuant Miner、Vibe-Trading、QuestDB、TSP（tick-stock-panel）、ZenTrade | A 股/美股数据、技术指标、投研、回测、纸面交易与受控连接器 |
+| [MCP、API 与 Agent 工具桥接](catalog/mcp-api-tools.md) | mcp2cli、AOCI-CODE、Agent Lightning、ClassCAD AI | MCP/API 桥接、代码认知、Agent 训练及参数化 CAD |
 | [Agent 浏览器](catalog/agent-browser.md) | ego lite | Agent 浏览器自动化、复用本机登录态 |
 | [浏览器、网页 Agent 与自动化](catalog/browser-web-agent.md) | GitReverse、CloakBrowser、Page Agent、scroll-world、UI-TARS | 仓库/网站反向 Prompt、自家网页 Copilot、浏览器运行时、沉浸式品牌页 Skill、视觉 GUI Agent |
 | [网页采集](catalog/web-scraping.md) | Scrapling | 动态站点、反爬场景、自适应选择器、规模化采集 |
 | [视觉 AI、CV 与办公](catalog/vision-office.md) | Qwen 多角度 3D Camera、Supervision、Larkboat、patent-disclosure-skill、AI剪口播、衣装集 COSTUME-DB-01、姿势集 POSE-DB-01 | 图像多视角、检测/分割后处理、文档/表格/PPT 办公、专利技术文档、口播转录与剪辑工程、服装/姿态参考图库 |
-| [设计资源](catalog/design-resources.md) | Lucide、Phosphor、Tabler、Radix、Uiverse Galaxy、BoardUI、Bencho、Emil Kowalski Skills、Oil UI、IP as Logo、pixelfx、Blender Skills（Arjun） | 产品界面、原型、前端实现、React 后台/AI 界面组件基座、交互微动效与界面音效、UI 动效和 Agent 设计决策参考、吉祥物候选图 |
-| [资源目录与邮箱](catalog/resources-email.md) | FMHY、Public APIs、邮箱助手 | 资源发现、API 候选、邮箱服务导航 |
-| [调研与研究 Skills](catalog/research-skills.md) | Deep Research Anything（本库维护）、DeerFlow 2.0、Marketing Skills | 多角度网络调研、论文精读、系统性文献综述、咨询级报告、数据/SQL 分析、开源仓库尽调 |
+| [设计资源](catalog/design-resources.md) | Lucide、Phosphor、Tabler、Radix、Uiverse Galaxy、BoardUI、Bencho、Emil Kowalski Skills、Oil UI、IP as Logo、pixelfx、Blender Skills（Arjun）、img2threejs、Stageshow、Godogen、Anatomy | 界面资源、产品动效、三维程序化重建、解释型插画与游戏生成 |
+| [资源目录与邮箱](catalog/resources-email.md) | FMHY、Public APIs、邮箱助手、Open source games | 资源/API/邮箱服务发现、按类型查游戏源码 |
+| [调研与研究 Skills](catalog/research-skills.md) | Deep Research Anything（本库维护）、DeerFlow 2.0、Marketing Skills、Sparkling | 研究与取证、营销获客、材料驱动的业务共创研讨 |
 
 ## 快速选择
 
@@ -66,3 +66,14 @@
 - 想让 Agent 在 Blender 中按建模、UV、材质、绑定、优化到引擎导出的流程制作三维资产：看 [**Blender Skills（Arjun）**](catalog/design-resources.md)。94 个 Skill 加共享 references，需另装 BlenderMCP；Python 执行有文件/网络权限，先做副本和最小范围测试，Windows MCP 配置不可直接照搬 Mac。
 
 - 想让 Agent 按产品定位和客户画像完成营销计划、SEO、文案、B2B 客户开发与转化分析：看 [**Marketing Skills（Corey Haines）**](catalog/research-skills.md)。先建 product-marketing 上下文，按需启用技能；广告花费、邮件发送、CRM 写入与数据外发需单独授权，工业出海不能直接套 SaaS 增长承诺。
+
+### 游戏、创作、CAD 与业务研讨
+
+- **[Open source games](catalog/resources-email.md)**：按类型发现完整游戏、重制项目与源码；CC0 仅覆盖目录，部分游戏另需合法原版数据。
+- **[img2threejs](catalog/design-resources.md)**：参考图转程序化 Three.js，不是摄影测量或精确工程反求；安装器可能改多个 Agent 的技能链接。
+- **[Stageshow](catalog/design-resources.md)**：营销页产品 UI 插画、光标故事与短动效；示意点击不是浏览器自动化，App 图标不在 MIT 范围。
+- **[Godogen](catalog/design-resources.md)**：Claude/Codex 多引擎游戏生成与运行证据闭环；素材工具可能需要 NVIDIA/付费 API，--force 会清空目标目录。
+- **[Anatomy](catalog/design-resources.md)**：SVG/WebGL 等轴测机械与技术解释图；可选 3D 为 beta，不替代 CAD/工程计算。
+- **[Sparkling](catalog/research-skills.md)**：用反常、证据与白板共创业务判断；AGPL-3.0-only，缺资料先取证，不强行给确定答案。
+- **[ClassCAD AI](catalog/mcp-api-tools.md)**：约束草图、参数化零件、装配与验证；MCP MIT 不等于引擎免费商用/STEP 导出，分享 relay 另有外发边界。
+- **[ZenTrade](catalog/quant-data.md)**：自托管美股研究、回测和纸面交易；Agent 先用只读 key，混合许可需逐项核对，不连接真实券商下单。
