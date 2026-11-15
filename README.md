@@ -22,7 +22,7 @@
 | [设计资源](catalog/design-resources.md) | 图标库、React UI 组件库（BoardUI 源码型设计系统 / Bencho 交互与音效）、界面灵感素材、pixelfx 像素游戏特效与创作 Skill、Arjun Blender 三维制作 Skills |
 | [设计工程与 Agent Skills](catalog/design-resources.md) | UI 动效、交互审查、原型、多方向视觉探索与设计决策 Skills |
 | [资源目录与邮箱](catalog/resources-email.md) | 资源/API 发现和邮箱服务导航 |
-| [调研与研究 Skills](catalog/research-skills.md) | 多角度调研、论文评审与文献综述、咨询级报告、数据核对、仓库尽调（含本库维护的 Deep Research Anything） |
+| [调研与研究 Skills](catalog/research-skills.md) | 多角度调研、论文评审与文献综述、咨询级报告、数据核对、仓库尽调（含本库维护的 Deep Research Anything）；Marketing Skills 营销、获客与增长工作流 |
 
 ## 收录原则
 
@@ -33,6 +33,8 @@
 5. 目录中的外部链接是研究入口，不是安全、质量、版权、可用性或商业授权保证。
 
 ## 当前重点收录
+
+- **营销与获客**：[Marketing Skills（Corey Haines）](catalog/research-skills.md)，53 个策略、SEO、文案、B2B 外联与增长技能；工具账号与广告/群发权限另行授权。
 
 - **三维资产与 Blender 工作流**：[Blender Skills（Arjun）](catalog/design-resources.md)，94 个专项技能与共享参考，需另接 BlenderMCP；不是独立建模应用。
 
