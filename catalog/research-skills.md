@@ -128,3 +128,32 @@ cp -R deep-research-anything ~/.claude/skills/
 - README 有明确披露的商业合作伙伴，作者声称核心推荐不受赞助影响；这是上游声明而非本库独立审计结论，选择工具仍按需求、权限、成本和现有系统评估。
 - 主要面向技术营销与软件/创业产品，工业定制品的验证周期、渠道与订单模式需重新校准，不能直接套 SaaS 漏斗并承诺营收、SEO 排名或获客效果。
 - 本条只收录与审阅文档，不安装技能、不接营销账户、不发送邮件或投放广告。
+
+
+## Sparkling — 以证据、反常与白板推动业务共创研讨的 Skill
+
+| 字段 | 信息 |
+| --- | --- |
+| 上游 | [thePlannerIvan/sparkling](https://github.com/thePlannerIvan/sparkling) |
+| 许可证 | 已读 LICENSE：AGPL-3.0，README 明确 AGPL-3.0-only；商业定制/其他授权需另谈，不是 MIT。 |
+| 技术形态 | 纯工作流协议 Skill、研讨白板与纪要模板，不依赖专属脚本或 DSH 插件。 |
+| 收录快照 | 2026-11-16 CST；62 stars、8 forks；未归档；星标不代表质量认证 |
+| 维护快照 | 默认分支 main，提交 `73082811bdac`（2026-11-14 UTC）；未发现 GitHub Release |
+
+### 身份与定位
+
+用户提供的 `lawyif` 线索对应作者公开联系方式 Lawyif@163.com；已找到作者“阿祖不看 TVC”的 canonical 仓库 `thePlannerIvan/sparkling`，而不是把 lawyif 擅自当成已证实 GitHub owner。官网 demyth.info，出处见 NOTICE。
+
+用于拿着材料与用户共同推导业务卡点，不是自动输出长篇总结：首轮提出反常点、互斥点和未经检验的默认公理；随后短回合用 PO 挑衅/事实混成检验解释，并维护 `sparkling-whiteboard.md`，避免被否定假设反复出现。最后可输出一页洞察纪要，或关键分歧与取证清单。
+
+### 适合什么与接入
+
+适合有背景材料但判断卡住的产品、营销、组织或商业讨论；不是缺资料时凭空代替市场调研。可先用 Deep Research Anything 取证、Marketing Skills 组织营销事实，再用 Sparkling 协助讨论，但不自动把它加载为所有对话的强制风格。
+
+上游 `npx skills add https://github.com/thePlannerIvan/sparkling --skill sparkling`，按宿主选项目级目录；先确认白板保存位置和覆盖规则，再用“带着这些资料和我讨论，先别写总结报告”触发。外部 `/research` 是可选环境能力，不是此仓库自带可用工具。
+
+### 安全、许可与能力边界
+
+AGPL 的分发、修改和网络服务义务需按实际使用方式评估；COMMERCIAL.md 只说明可讨论定制/其他授权，不表示已获闭源商业授权。TRADEMARK.md 禁止冒充作者或官方背书，修改版注明 fork/来源；默认不往最终客户文件添加项目品牌。
+
+白板可能含经营数据、客户信息和内部假设；确认宿主模型外发及存储权限，事实/推断/待查分开记录，禁止为制造“顿悟”编造因果。250 字短回合、奥卡姆剃刀是讨论方法，不是证明或专业裁决；重大商业决策由用户控制，不替用户确定结论或擅自追加执行任务。本次未安装或创建研讨白板。
