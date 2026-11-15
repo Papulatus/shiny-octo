@@ -566,3 +566,34 @@ npm install pinets@0.11.0
 - 单容器仍需备份数据与配置、验证恢复、磁盘/任务监控和升级回滚；不要自动追 latest。GHCR 镜像与自构建的插件/老 CPU 支持可能不同，采用前确认。
 - 本次仅收录，未测试应用、接入数据、安装 MCP 或运行回测；研究结果不构成投资建议，历史收益不能证明未来表现。
 
+
+
+## ZenTrade — 自托管美股波段研究、监控与纸面交易工作台
+
+| 字段 | 信息 |
+| --- | --- |
+| 上游 | [wuyangfan234/zentrade](https://github.com/wuyangfan234/zentrade) |
+| 许可证 | 已读根 MIT 与 LICENSE.upstream；第三方策略含 GPL-3.0、MPL-2.0、CC BY-NC-SA、非商用及未明许可，**不能称全仓统一 MIT/OSI 开源**。 |
+| 技术形态 | React/TypeScript + FastAPI/Python ≥3.11，Parquet/DuckDB/JSON，自托管 Docker，HTTP + Streamable HTTP MCP。 |
+| 收录快照 | 2026-11-16 CST；35 stars、16 forks；未归档；星标不代表质量认证 |
+| 维护快照 | 默认分支 main，提交 `eedf99263588`（2026-11-15 UTC）；未发现 GitHub Release |
+
+### 是什么与核心能力
+
+美股波段研究到纸面执行的工作台：机会卡、市场情报、自选、因子、回测/样本外验证、策略挖掘、风险预算、公司行动和事件台账。README 明确不连接真实券商下单，Alpaca 镜像仅 paper-api；本地排名模型和 AI 分析不应视为真实收益或交易保证。应用版本固定 0.56.0，后续以 Git commit 区分构建，不能靠版本号判断新旧。
+
+数据按能力路由，常用 Alpaca（免费 IEX 不等于全市场成交口径）、TickFlow、Finnhub、SEC/QVeris 等；服务账号、地域权限和计费单独申请。LLM 可按任务配多个 OpenAI 兼容通道，未配置不代表核心纸面环不可用；数据、新闻、策略和账户上下文可能发给外部模型。
+
+### Agent 接入与采用方式
+
+先读 [部署指南](https://github.com/wuyangfan234/zentrade/blob/main/docs/deployment.md)、SECURITY.md 与 [API/MCP](https://github.com/wuyangfan234/zentrade/blob/main/docs/api-and-mcp.md)。Docker 默认绑定 127.0.0.1:3018、./data 持久化，先隔离数据目录/测试账户再试，不接现有实盘系统。持续任务、全市场历史和本地训练会增加 CPU/内存/磁盘成本，先按实际自选和历史范围评估，不默认常驻部署。
+
+外部 Agent 连接 `/api/mcp`，用每 Agent 独立、可撤销、有期限的 Bearer key；先选“只读”权限，可查询/回测但不能写策略和设置。完全控制 key 可触及通用 zentrade_api 和自定义 Python 策略，接近单用户登录权限，不能当普通行情读取凭据。
+
+### 许可证、供应链与交易边界
+
+必须逐项阅读 [第三方声明](https://github.com/wuyangfan234/zentrade/blob/main/THIRD_PARTY_NOTICES.md)。Python 重写 Pine 不会自动消除原脚本许可；共用内核混有多来源，不能把后端 wheel 一概视作 MIT。严格 OSI/商业采用可研究 `scripts/export_core.py` 与 core_manifest，但导出后仍需复核并重新测试，非商用、私有授权与未明确许可不可默认打包再分发。
+
+单用户应用不是多租户沙箱：AST 检查不能隔离恶意策略，扩展 HTTP 数据源可能引发服务端请求；不向不可信用户开放，不直接暴露端口，公网需 HTTPS、强认证和审计。可选 Codex 凭据挂载需另授权。README 的交易平台推广/返佣链接是作者商业推广，不是数据接口、实际股票所有权或本库推荐。
+
+回测与纸面结果非未来承诺；核对前视偏差、幸存者偏差、复权、滑点、费用和数据来源口径，实际资金执行必须另做风控。本次只收录，没有部署、接账户或运行策略。
