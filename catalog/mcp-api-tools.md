@@ -140,3 +140,32 @@ Agent Lightning v1.0 是针对 Agent 轨迹采集与策略训练的基础设施�
 ### 安全、隐私、供应链与能力边界
 
 训练 rollout 能运行代码和工具：使用一次性容器、最小文件/网络权限、非生产凭据、Kubernetes 最小 RBAC、配额、超时和停止机制。Gateway/轨迹可能记录 prompt、源码、工具结果及敏感数据，应做脱敏、保留期限和访问审计。防 reward hacking、评测泄漏与环境被篡改；不能用训练集分数代替样本外验收。MIT 不自动覆盖模型权重、数据集、依赖与第三方 API；本次仅收录，未安装或训练。
+
+
+## ClassCAD AI — Agent 驱动的参数化零件、装配与 CAD MCP
+
+| 字段 | 信息 |
+| --- | --- |
+| 上游 | [awv-informatik/classcad-ai](https://github.com/awv-informatik/classcad-ai) |
+| 许可证 | 已读 packages/mcp/LICENSE 与 packages/skill/LICENSE：MIT，© 2026 AWV Informatik AG；**不等于 ClassCAD 几何引擎免费商用**，引擎按账号套餐授权。 |
+| 技术形态 | Node ≥20、stdio MCP shim + 本机 daemon + WASM/可选 worker；Skill、script、renderer、MCP 与 buerli 集成的 monorepo。 |
+| 收录快照 | 2026-11-16 CST；186 stars、14 forks；未归档；星标不代表质量认证 |
+| 维护快照 | 默认分支 next，提交 `586914e54f42`（2026-11-11 UTC）；未发现 GitHub Release |
+
+### 是什么与核心能力
+
+官方入口 [classcad.ai](https://classcad.ai/)，上游默认分支为 **next**。以 headless ClassCAD 做真正参数化 CAD：约束草图、特征建模、实体/曲线、表达式、零件和装配，读取结构、几何量与截图验证；可处理 STEP、STL、OFB，实际导出权限依套餐。与 Blender/Three.js 视觉模型不同，它更贴近尺寸、草图约束和可重建的机械模型。
+
+MCP 包源码 package.json 版本 0.6.2，不能据此保证 npm latest 完全相同；首次使用从供应商下载引擎资产并缓存，需 classcad.ch 登录。引擎可在本机 WASM 运行，不必先架设远程 CAD server；另有 worker 和共享 app 会话，不应混为一条固定架构。
+
+### 接入与授权
+
+上游提供 `npx -y @classcad/mcp@latest`（stdio）及 Claude/Codex 配置，实际采用应固定审查版本，并只接指定 Agent。启动时会按需拉起本机 daemon（文档 127.0.0.1:9097/9098），空闲可退出；不是让用户另建一个永久 launchd 服务。先在新 drawing 建简单盒子，核对体积、尺寸、截图，再保存副本和导出测试。
+
+[套餐说明](https://github.com/awv-informatik/classcad-ai/blob/next/packages/skill/references/PLANS.md) 写明：Free 面向私人使用/评估、导出 STL；Solo 才含单机商业用途及 STEP/OFB；Pro/Business 涉及公开域名或自建服务器等扩展。新账号 14 天 Solo 试用**不是永久免费 STEP 商用**。实时 `account` 结果与供应商当期合同优先，不依据免费 MCP 的 MIT 推导引擎权利。
+
+### 安全、隐私与工程边界
+
+首次 npm/引擎下载、账号登录、资产缓存和本地文件写入分别有供应链与存储影响；run_script 和导入/导出仅操作授权路径，限制权限并保留版本。共享功能可通过出站 Cloudflare relay 让其他机器加入，不能因本机建模就称“绝不外发”：商业图纸先核共享邀请、网络和模型通道，默认不生成公开分享。
+
+装配与截图正确不等于可制造；液压/压力部件仍需尺寸公差、材料、标准件、密封、强度与工艺复核。禁止自动把概念件作为合格生产文件发布。本次未安装 MCP、登录账号、下载引擎或验证导出。
