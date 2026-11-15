@@ -453,3 +453,48 @@ npx skills add oil-oil/oil-ui
 - **本地效果生成与 Patch 发布是两回事**：预览/导出不要求购买图像模型 API；`pch login/init/publish` 是另一个 CLI 和账户/网络发布工作流，上游要求 Windows 上运行 Patch Desktop 做发布前测试。不得自动安装全局 CLI、登录或发布未经用户批准的内容。
 - 性能随分辨率、并发效果数量和 CPU 像素合成变化；“无运行时依赖”不代表零算力开销。移动端帧率、内存、循环接缝、透明度和亮背景发光效果需实测；强闪光/震屏提供减弱或关闭方式。
 - 本条为源码与文档收录审查，未实际运行渲染、测试游戏引擎导入或认证跨平台兼容性。
+
+
+### Blender Skills（Arjun）— 94 个 Blender 专项技能与 MCP 生产流程
+
+| 字段 | 信息 |
+| --- | --- |
+| 官方上游与作者 | [arjun988/blender-skills](https://github.com/arjun988/blender-skills)，作者 GitHub `arjun988`（Arjun） |
+| 官网与指南 | [blender-skills.vercel.app](https://blender-skills.vercel.app/) · [技能与决策树](https://github.com/arjun988/blender-skills/blob/main/SKILLS_GUIDE.md) · [MCP 接入](https://github.com/arjun988/blender-skills/blob/main/docs/BLENDER_MCP_SETUP.md) |
+| 许可证 | 已读取根 LICENSE：MIT，© 2026 blender-skills contributors；Blender、外部 MCP、下载素材与云端生成服务的许可证/费用另核 |
+| 技术形态 | Markdown Agent Skills + 共享参考文档 + BlenderMCP 配置，不是独立建模软件或模型权重 |
+| 收录快照 | 2026-11-14 CST；3,616 stars、312 forks；未归档 |
+| 维护快照 | version.json 为 1.3.0（版本日期 2026-07-10）；main 提交 `904f095d8f36`（2026-11-06 UTC）；未发布 GitHub Release |
+| 实际数量 | `.claude/skills/` 实核 94 个 SKILL.md、175 个 references Markdown；`.cursor/skills/` 也有 94 个镜像条目，**不是额外 94 项独立能力** |
+
+#### 是什么与核心能力
+
+将 Blender 制作任务拆为专业角色、风格规则和交付检查的技能包。`blender-director` 负责分析需求、预算与流程规划，再选择建模、UV、材质、灯光、绑定、动画、优化和导出技能；通过另装的 [ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp) 操作正在运行的 Blender。安装 Skill **不等于**安装 Blender 或获得 MCP 执行能力。
+
+覆盖硬表面、道具、车辆、场景、植被、角色/生物、雕刻、重拓扑、UV、纹理、毛发、布料、Geometry Nodes、镜头、渲染、合成、VFX、物理、LOD、碰撞代理与 Unity/Unreal/Godot 导出。另有低模、写实、动漫、体素、HD-2D、PSX/恐怖、科幻与奇幻世界、情绪及游戏类型风格包；细分题材放在参考文档中，不应理解成每个风格都有专门生成模型。
+
+典型流程：
+- 游戏道具：director → hard-surface → uv-workflow → materials → asset-optimization → export-pipeline。
+- 角色：character-artist → sculpting/retopology → UV/纹理 → rigging → animation → 导出。
+- 参考图匹配：先分析参考、匹配相机和大形，再做材质灯光，并截图对比迭代；不保证精确复刻、工程尺寸或拓扑质量。
+
+#### 适合什么
+
+适合让 Coding Agent 以统一预算与命名规范制作 Blender 游戏资产、场景原型、产品展示和引擎导出，特别是需要明确流程与验收清单时。与 pixelfx 的像素特效不同，它侧重三维资产制作流程；也不是 CAD、加工图纸或机械强度校核工具。技能中的“资深技术美术/AAA”是角色提示设定，**不是实测生产能力认证**。
+
+#### 推荐接入
+
+1. 先读 `QUICKSTART.md`、`SKILLS_GUIDE.md`，从 director 和当前任务所需的少量专项技能开始；不要无差别塞入所有全局技能。Claude/Cursor 各有目录，Codex/Kiro 需按宿主的技能发现路径适配；其他 Agent 兼容性需验证。
+2. 如复制技能，**共享的 `.claude/skills/references/` 也要一起保留**；很多入口使用 `../references/...`，只拷一个 SKILL.md 会断链。
+3. 执行能力另配 Blender 与 BlenderMCP addon/MCP server。仓库文档列 Blender 3.0+、Python 3.10+，推荐 3.11；应与实际 MCP 和 Blender 版本复核后锁定依赖。
+4. 根 `.mcp.json` 使用 Windows 专用 `cmd /c uvx --python 3.11 blender-mcp`；**Mac/Linux 不可照抄 `cmd /c`**，需按客户端配置调用 uvx。默认连接 `localhost:9876`，服务器/容器上的 localhost 不等于 Mac 上的 Blender。
+5. 先在场景副本做只读场景信息和截图测试，再验证创建一个简单对象、保存副本与目标引擎导入。安装市场说明在 README 中仍标审核中，不承诺已上架官方市场。
+
+#### 安全与能力边界
+
+- `execute_blender_code` 可在 Blender 中执行任意 Python，拥有该进程的文件与网络权限；不是只读图形控制。先备份 .blend，限制目录，破坏性操作和覆盖/发布须确认，端口不公开暴露。
+- 外部 BlenderMCP 是独立供应链。仓库的 `uvx blender-mcp` 未锁版本，先审查 addon 与运行包再固定版本；不要直接执行未经审查的远程安装脚本。
+- 可选 Poly Haven、Sketchfab、Hyper3D、Hunyuan3D 等资产/生成服务，可能下载内容、上传提示或参考图并产生费用，分别核对素材许可、凭据、隐私与遥测；配置 `DISABLE_TELEMETRY=true` 不构成所有第三方均无外发的保证。
+- 已观察到 director frontmatter 的 `role` 键重复（specialist / orchestrator）；不同 YAML 解析器可能报错或覆盖，接入目标 Agent 前做 metadata/引用校验，不把“94 个目录存在”当作全部可加载的证明。
+- 复杂制作按截图和网格实测验收：面数、法线、UV、贴图、单位/轴向、蒙皮、LOD 与引擎导入都需检查；高数量技能不保证审美、速度或自动化稳定性。
+- 本条为文档与目录结构核验，未安装技能或 MCP、未启动 Blender、未实测自动建模。
