@@ -18,7 +18,7 @@
 | [Agent 浏览器](catalog/agent-browser.md) | 可保留登录态的人机协作浏览器 |
 | [浏览器、网页 Agent 与自动化](catalog/browser-web-agent.md) | 网页内 Copilot、仓库/网站反向 Prompt、浏览器自动化运行时、沉浸式品牌页 Skill |
 | [网页采集](catalog/web-scraping.md) | 自适应解析、反爬与爬虫框架 |
-| [视觉 AI、CV 与办公](catalog/vision-office.md) | 多视角图像、服装/姿态参考图库、CV 工具箱、文档/表格/PPT 自动化、专利交底与知识管理 |
+| [视觉 AI、CV 与办公](catalog/vision-office.md) | 多视角图像、服装/姿态参考图库、CV 工具箱、文档/表格/PPT 自动化、专利交底与知识管理、宠物插画生成（Uchinoko Maker） |
 | [设计资源](catalog/design-resources.md) | 图标库、React UI 组件库（BoardUI 源码型设计系统 / Bencho 交互与音效）、界面灵感素材、pixelfx 像素游戏特效与创作 Skill、Arjun Blender 三维制作 Skills；img2threejs、Stageshow、Anatomy、Godogen、Pixel-art Gaussian Splats（三维像素风） |
 | [设计工程与 Agent Skills](catalog/design-resources.md) | UI 动效、交互审查、原型、多方向视觉探索与设计决策 Skills |
 | [资源目录与邮箱](catalog/resources-email.md) | 资源/API 发现和邮箱服务导航；Open source games 游戏源码目录；ChromeAppHeroes Chrome 扩展中文评测合集 |
@@ -59,6 +59,7 @@
 
 - **Agent 训练**：[Agent Lightning](catalog/mcp-api-tools.md)，真实 harness 下的 RL 研究基础设施。
 - **视觉 GUI Agent**：[UI-TARS](catalog/browser-web-agent.md)，模型与解析工具，不等于桌面客户端。
+- **宠物插画**：[Uchinoko Maker](catalog/vision-office.md)，免费拼装猫狗插画；著作权归运营方，仅个人与家庭可用，禁商用。
 - **吉祥物与视频制作**：[IP as Logo](catalog/design-resources.md)、[AI剪口播](catalog/vision-office.md)。
 
 ---
