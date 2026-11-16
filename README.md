@@ -13,7 +13,7 @@
 | 类别 | 内容 |
 | --- | --- |
 | [金融 AI](catalog/financial-ai.md) | 市场时间序列、量化研究与金融基础模型 |
-| [量化研究与市场数据](catalog/quant-data.md) | A 股数据、行情 MCP、研究工程、回测/交易框架与时序数据库；ZenTrade 美股研究与纸面交易 |
+| [量化研究与市场数据](catalog/quant-data.md) | A 股数据、行情 MCP、研究工程、回测/交易框架与时序数据库；ZenTrade 美股研究与纸面交易；X2Strategy 论文策略复现（无许可证） |
 | [MCP、API 与 Agent 工具桥接](catalog/mcp-api-tools.md) | 将 MCP、OpenAPI 与 GraphQL 接入 CLI/Agent，以及代码与 schema 认知索引治理；ClassCAD 参数化 CAD MCP |
 | [Agent 浏览器](catalog/agent-browser.md) | 可保留登录态的人机协作浏览器 |
 | [浏览器、网页 Agent 与自动化](catalog/browser-web-agent.md) | 网页内 Copilot、仓库/网站反向 Prompt、浏览器自动化运行时、沉浸式品牌页 Skill |
@@ -42,6 +42,7 @@
 - **业务研讨**：[Sparkling](catalog/research-skills.md)，带材料与证据共创判断；AGPL-3.0-only，非自动研究替代品。
 - **参数化工程建模**：[ClassCAD AI](catalog/mcp-api-tools.md)，MCP/Skill MIT，几何引擎商用与导出权限按套餐。
 - **美股研究工作台**：[ZenTrade](catalog/quant-data.md)，纸面交易与受限 API/MCP；第三方策略含混合/非商用许可。
+- **论文策略复现**：[X2Strategy](catalog/quant-data.md)，LLM 提取 + 确定性验证的六阶段管线；仓库无 LICENSE，商用与再分发需授权，论文内容会外发到所选模型供应商。
 
 - **营销与获客**：[Marketing Skills（Corey Haines）](catalog/research-skills.md)，53 个策略、SEO、文案、B2B 外联与增长技能；工具账号与广告/群发权限另行授权。
 
