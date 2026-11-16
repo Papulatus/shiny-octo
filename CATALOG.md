@@ -12,7 +12,7 @@
 | [网页采集](catalog/web-scraping.md) | Scrapling | 动态站点、反爬场景、自适应选择器、规模化采集 |
 | [视觉 AI、CV 与办公](catalog/vision-office.md) | Qwen 多角度 3D Camera、Supervision、Larkboat、patent-disclosure-skill、AI剪口播、衣装集 COSTUME-DB-01、姿势集 POSE-DB-01 | 图像多视角、检测/分割后处理、文档/表格/PPT 办公、专利技术文档、口播转录与剪辑工程、服装/姿态参考图库 |
 | [设计资源](catalog/design-resources.md) | Lucide、Phosphor、Tabler、Radix、Uiverse Galaxy、BoardUI、Bencho、Emil Kowalski Skills、Oil UI、IP as Logo、pixelfx、Blender Skills（Arjun）、img2threejs、Stageshow、Godogen、Anatomy、Pixel-art Gaussian Splats | 三维像素风渲染、界面资源、产品动效、三维程序化重建、解释型插画与游戏生成 |
-| [资源目录与邮箱](catalog/resources-email.md) | FMHY、Public APIs、邮箱助手、Open source games | 资源/API/邮箱服务发现、按类型查游戏源码 |
+| [资源目录与邮箱](catalog/resources-email.md) | FMHY、Public APIs、邮箱助手、Open source games、ChromeAppHeroes | 资源/API/邮箱服务发现、按类型查游戏源码、查阅 Chrome 扩展中文评测 |
 | [调研与研究 Skills](catalog/research-skills.md) | Deep Research Anything（本库维护）、DeerFlow 2.0、Marketing Skills、Sparkling | 研究与取证、营销获客、材料驱动的业务共创研讨 |
 
 ## 快速选择
@@ -79,3 +79,5 @@
 - **[ZenTrade](catalog/quant-data.md)**：自托管美股研究、回测和纸面交易；Agent 先用只读 key，混合许可需逐项核对，不连接真实券商下单。
 
 - 想让代码场景或已有GLB/glTF骨骼角色呈现可旋转、动态光照的实时像素风：看 [**Pixel-art Gaussian Splats**](catalog/design-resources.md)。Three.js + Spark，不是完整游戏引擎；Kervan示例模型不受MIT覆盖，动画/大地图/移动性能需独立验证。
+
+- 想挑 Chrome 扩展、先读中文说明再决定装不装：看 [**ChromeAppHeroes**](catalog/resources-email.md)。按编号收录上百篇扩展评测，只作候选清单；文章含作者推广，且仓库许可（GPLv3 / Anti-996 / ISC）三处不一致，安装前核商店权限与时效，不得整站转载。
