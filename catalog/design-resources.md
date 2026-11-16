@@ -600,3 +600,54 @@ Agent 可执行生成代码、启动服务器、下载模型和调用付费 API�
 ### 安全、工程与边界
 
 脚本可启动浏览器、截图和写 HTML/JS，先在专用目录运行，生成页面不得默认访问生产账户或私密文件。宿主可能将参考图、技术资料发给外部视觉模型，提前确认保密边界。火箭、液压等图示只作解释，尺寸、工况与读数需专家/资料核验，不能替代制造图纸、仿真或安全计算。验证可访问性、键盘/触摸、reduced-motion、WebGL 降级及性能；未实际渲染或安装。
+
+
+## Pixel-art Gaussian Splats — 可旋转、带骨骼动画的实时三维像素风渲染
+
+| 字段 | 信息 |
+| --- | --- |
+| 官方上游 | [cobanov/pixelart-gaussiansplat](https://github.com/cobanov/pixelart-gaussiansplat)，作者 Mert Cobanov |
+| 演示与文档 | [在线演示](https://splats.cobanov.dev/) · [渲染原理](https://github.com/cobanov/pixelart-gaussiansplat/blob/main/docs/how-it-works.md) · [编写场景](https://github.com/cobanov/pixelart-gaussiansplat/blob/main/docs/make-a-scene.md) · [转换自有模型](https://github.com/cobanov/pixelart-gaussiansplat/blob/main/docs/bring-your-own-model.md) |
+| 许可证 | 根 LICENSE 已读：MIT，© 2026 Mert Cobanov；README 说明代码生成的场景同为 MIT。**public/models 中来自 Kervan 的转换生物模型仅作示例，不受 MIT 覆盖**，不能随代码许可一并推定商用 |
+| 技术形态 | JavaScript ESM、Three.js + Spark、Vite；Node 20.19+（22 分支需22.12+），浏览器需 WebGL 2；不是 Agent Skill 或完整游戏引擎 |
+| 收录快照 | 2026-11-17 CST；33 stars、2 forks；未归档；星标不是质量或性能认证 |
+| 维护快照 | package.json 0.1.0；默认分支 main 提交 `da7a56a8ba840c88ff7963c9d3292d8aacf78647`（2026-11-15 18:16:29 UTC）；pushed_at 2026-11-15 18:17:08 UTC；无 GitHub Release；处于新发布的早期项目阶段 |
+
+### 是什么
+
+将真正可旋转的三维场景和角色以清晰像素画呈现的浏览器渲染项目。用扁平 surfel splats 表达表面，关闭柔和高斯衰减，在低分辨率目标上绘制硬边圆片，再做有限色板量化与 Bayer 有序抖色。像素网格固定在屏幕，而不是把场景变成体素；不等于传统2D精灵或完整HD-2D制作系统。
+
+无需先摄影采集/训练高斯模型：场景可用JavaScript中的SDF形状、草叶、光晕和粒子构建；也可将已有glTF/GLB三角网格采样成splats。演示的观感不证明摄影重建、AI生成模型或游戏玩法系统已经包含。
+
+### 核心能力与适用场景
+
+- **代码场景**：岛屿、建筑、树木、草、落叶、烟、萤火虫和灯光；场景在Node端烘焙为`.dio`，浏览器加载，不是运行时通用地图编辑器。
+- **已有资产转换**：GLB/glTF模型生成`.psf`；带骨骼的模型另保存`.rig.glb`并播放动画。读取基色、顶点色、自发光、双面和alpha cutoff；跳过玻璃，不读取normal map或metalness。
+- **动态表现**：GPU逐splat着色、环境/方向光及最多4个点光源；骨骼动画、粒子、色板、像素尺寸与抖色可调。
+- **角色小岛**：工具根据各动画的伸展范围和脚部位置生成装饰小岛；不是完整碰撞、导航或物理系统。
+- **录制**：可录canvas视频，capture模式通过`window.viewer.renderAt(seconds)`逐时刻渲染。官方建议视频用偶数像素尺寸减少压缩模糊。
+
+适合像素风三维角色展示、网页小场景、渲染风格实验、游戏美术原型；可作为浏览器游戏的渲染基础，但玩法、输入控制、碰撞、寻路、地图流式加载、存档和打包需另开发。与 **pixelfx** 的2D像素特效/精灵图导出不同，也不是 **Blender Skills** 的建模工作流；没有据已读文档确认Unity/Godot直接导入本项目的通用方案。
+
+### 推荐接入方式
+
+先看在线演示，再在独立测试项目固定上述提交并审查依赖；本库仅收录，未安装或运行。上游命令为：
+
+```bash
+npm install
+npm run dev
+npm run scene hello
+npm run convert path/to/model.glb mymodel
+npm run island mymodel ruins
+```
+
+`scene/convert/island`会写入`public/models`相关产物，转换器还会更新模型面板目录；先备份同名文件并阅读工具实现。自己的GLB/动画可先由Blender等制作，确保素材授权，再试转换。开发服务器优先只绑定回环，不把模型目录默认公开。采用前用代表性角色/场景验证动画、边缘稳定、帧时间、内存和移动端，而非直接替换游戏主技术栈。
+
+### 安全、许可、供应链与能力边界
+
+- **MIT不覆盖所有示例资产**：牛头人、蟾蜍、秃鹫、鬣狗、dragon shield等Kervan转换模型是仅供示例，商业作品改用自有/明确授权资产；依赖和外部模型许可分别核验并保留版权声明。
+- **动画限制**：最多256关节、每splat四个权重；dual-quaternion蒙皮不支持骨骼动画缩放，morph targets忽略。文档“any GLB/glTF”不等于所有材质/变形功能兼容。
+- **不是性能保证**：默认约110000 splats、纹理缩至128是上游转换参数，不是实测预算。大地图、多角色、透明效果和移动设备适用性未知，必须测帧率/内存/载入耗时；无发布版不等于API稳定。
+- npm安装及Node转换工具执行本机代码、读模型并写产物，可能触发依赖安装脚本；先审查固定版本和输出路径，不用敏感生产目录。已读文档未要求云模型API，不据此保证代码及依赖绝无网络访问/遥测。
+- 若Agent制作场景，模型/参考图可能经宿主模型通道外发；本地转换不代表整个创作链无外发。模型发布、外网部署、付费服务与安装必须另获授权。
+- 本条为上游README、三份操作/原理文档、LICENSE和package元数据核验；未实际渲染、测游戏性能或认证引擎兼容性。
