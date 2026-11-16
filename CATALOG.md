@@ -5,7 +5,7 @@
 | 分类 | 条目 | 适用场景 |
 | --- | --- | --- |
 | [金融 AI](catalog/financial-ai.md) | Kronos、FinRL | K线/量价序列预测、金融时间序列研究、金融强化学习实验与回测原型 |
-| [量化研究与市场数据](catalog/quant-data.md) | A-Stock Data、stock-api、TA-Lib Python、PineTS、LLMQuant Hermes、QuantSpace、Lumibot、WorldQuant Miner、Vibe-Trading、QuestDB、TSP（tick-stock-panel）、ZenTrade | A 股/美股数据、技术指标、投研、回测、纸面交易与受控连接器 |
+| [量化研究与市场数据](catalog/quant-data.md) | A-Stock Data、stock-api、TA-Lib Python、PineTS、LLMQuant Hermes、QuantSpace、Lumibot、WorldQuant Miner、Vibe-Trading、QuestDB、TSP（tick-stock-panel）、ZenTrade、X2Strategy | A 股/美股数据、技术指标、投研、回测、论文策略复现、纸面交易与受控连接器 |
 | [MCP、API 与 Agent 工具桥接](catalog/mcp-api-tools.md) | mcp2cli、AOCI-CODE、Agent Lightning、ClassCAD AI | MCP/API 桥接、代码认知、Agent 训练及参数化 CAD |
 | [Agent 浏览器](catalog/agent-browser.md) | ego lite | Agent 浏览器自动化、复用本机登录态 |
 | [浏览器、网页 Agent 与自动化](catalog/browser-web-agent.md) | GitReverse、CloakBrowser、Page Agent、scroll-world、UI-TARS | 仓库/网站反向 Prompt、自家网页 Copilot、浏览器运行时、沉浸式品牌页 Skill、视觉 GUI Agent |
@@ -83,3 +83,5 @@
 - 想挑 Chrome 扩展、先读中文说明再决定装不装：看 [**ChromeAppHeroes**](catalog/resources-email.md)。按编号收录上百篇扩展评测，只作候选清单；文章含作者推广，且仓库许可（GPLv3 / Anti-996 / ISC）三处不一致，安装前核商店权限与时效，不得整站转载。
 
 - 想给自己或朋友的猫狗做插画头像：看 [**Uchinoko Maker**](catalog/vision-office.md)。部件拼装、免费、导出 2816×2816 PNG；但**著作权归运营方，仅许可个人与家庭使用**，商业用途、周边销售、名片海报与网站设计都被条款明确禁止。
+
+- 想把论文里的策略快速变成能回测的代码、又不放心“让模型直接写”：看 [**X2Strategy**](catalog/quant-data.md)。规格为中间层、三层确定性验证，但**仓库没有任何许可证**（默认保留所有权利，商用与再分发需作者授权）；论文全文会发给你选的模型供应商，生成的策略也不含成本与可成交性假设。
