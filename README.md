@@ -19,7 +19,7 @@
 | [浏览器、网页 Agent 与自动化](catalog/browser-web-agent.md) | 网页内 Copilot、仓库/网站反向 Prompt、浏览器自动化运行时、沉浸式品牌页 Skill |
 | [网页采集](catalog/web-scraping.md) | 自适应解析、反爬与爬虫框架 |
 | [视觉 AI、CV 与办公](catalog/vision-office.md) | 多视角图像、服装/姿态参考图库、CV 工具箱、文档/表格/PPT 自动化、专利交底与知识管理 |
-| [设计资源](catalog/design-resources.md) | 图标库、React UI 组件库（BoardUI 源码型设计系统 / Bencho 交互与音效）、界面灵感素材、pixelfx 像素游戏特效与创作 Skill、Arjun Blender 三维制作 Skills；img2threejs、Stageshow、Anatomy、Godogen |
+| [设计资源](catalog/design-resources.md) | 图标库、React UI 组件库（BoardUI 源码型设计系统 / Bencho 交互与音效）、界面灵感素材、pixelfx 像素游戏特效与创作 Skill、Arjun Blender 三维制作 Skills；img2threejs、Stageshow、Anatomy、Godogen、Pixel-art Gaussian Splats（三维像素风） |
 | [设计工程与 Agent Skills](catalog/design-resources.md) | UI 动效、交互审查、原型、多方向视觉探索与设计决策 Skills |
 | [资源目录与邮箱](catalog/resources-email.md) | 资源/API 发现和邮箱服务导航；Open source games 游戏源码目录 |
 | [调研与研究 Skills](catalog/research-skills.md) | 多角度调研、论文评审与文献综述、咨询级报告、数据核对、仓库尽调（含本库维护的 Deep Research Anything）；Marketing Skills 营销、获客与增长工作流；Sparkling 业务共创研讨 |
@@ -33,6 +33,8 @@
 5. 目录中的外部链接是研究入口，不是安全、质量、版权、可用性或商业授权保证。
 
 ## 当前重点收录
+
+- **三维像素风渲染**：[Pixel-art Gaussian Splats](catalog/design-resources.md)，代码场景与GLB/glTF骨骼角色转实时像素风；非完整游戏引擎，Kervan示例角色不受MIT覆盖。
 
 - **游戏源码与生成**：[Open source games](catalog/resources-email.md) 按类型找游戏源码；[Godogen](catalog/design-resources.md) 生成多引擎游戏项目，两者不等于免费素材授权。
 - **三维重建与解释型视觉**：[img2threejs](catalog/design-resources.md) 从参考图写程序化模型；[Anatomy](catalog/design-resources.md) 做 SVG/WebGL 等轴测技术插画。
