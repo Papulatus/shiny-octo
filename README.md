@@ -21,7 +21,7 @@
 | [视觉 AI、CV 与办公](catalog/vision-office.md) | 多视角图像、服装/姿态参考图库、CV 工具箱、文档/表格/PPT 自动化、专利交底与知识管理 |
 | [设计资源](catalog/design-resources.md) | 图标库、React UI 组件库（BoardUI 源码型设计系统 / Bencho 交互与音效）、界面灵感素材、pixelfx 像素游戏特效与创作 Skill、Arjun Blender 三维制作 Skills；img2threejs、Stageshow、Anatomy、Godogen、Pixel-art Gaussian Splats（三维像素风） |
 | [设计工程与 Agent Skills](catalog/design-resources.md) | UI 动效、交互审查、原型、多方向视觉探索与设计决策 Skills |
-| [资源目录与邮箱](catalog/resources-email.md) | 资源/API 发现和邮箱服务导航；Open source games 游戏源码目录 |
+| [资源目录与邮箱](catalog/resources-email.md) | 资源/API 发现和邮箱服务导航；Open source games 游戏源码目录；ChromeAppHeroes Chrome 扩展中文评测合集 |
 | [调研与研究 Skills](catalog/research-skills.md) | 多角度调研、论文评审与文献综述、咨询级报告、数据核对、仓库尽调（含本库维护的 Deep Research Anything）；Marketing Skills 营销、获客与增长工作流；Sparkling 业务共创研讨 |
 
 ## 收录原则
@@ -54,7 +54,7 @@
 - **MCP 与 API 桥接**：mcp2cli、[AOCI-CODE](catalog/mcp-api-tools.md)（FSL 源码可见）。
 - **视觉、设计与办公**：Qwen Image Multiple Angles 3D Camera、Supervision、Larkboat、[中国专利.skill](catalog/vision-office.md#patent-disclosure-skill中国专利skill--专利交底申请底稿与私有知识库技能套件)、Lucide、Phosphor、Tabler、Radix、Uiverse Galaxy、[BoardUI](catalog/design-resources.md)、[Bencho](catalog/design-resources.md)、Emil Kowalski Skills、[Oil UI](catalog/design-resources.md)。
 - **绘图参考图库**：[衣装集 / 姿势集](catalog/vision-office.md)（COSTUME-DB-01 / POSE-DB-01），站内浏览只作参考；站点禁止批量下载、再分发与销售。
-- **资源发现**：FMHY、Public APIs、邮箱助手。
+- **资源发现**：FMHY、Public APIs、邮箱助手、[ChromeAppHeroes](catalog/resources-email.md)（Chrome 扩展中文评测，许可待作者澄清，含推广内容）。
 
 
 - **Agent 训练**：[Agent Lightning](catalog/mcp-api-tools.md)，真实 harness 下的 RL 研究基础设施。
