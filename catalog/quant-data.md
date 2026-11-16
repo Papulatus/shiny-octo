@@ -597,3 +597,49 @@ npm install pinets@0.11.0
 单用户应用不是多租户沙箱：AST 检查不能隔离恶意策略，扩展 HTTP 数据源可能引发服务端请求；不向不可信用户开放，不直接暴露端口，公网需 HTTPS、强认证和审计。可选 Codex 凭据挂载需另授权。README 的交易平台推广/返佣链接是作者商业推广，不是数据接口、实际股票所有权或本库推荐。
 
 回测与纸面结果非未来承诺；核对前视偏差、幸存者偏差、复权、滑点、费用和数据来源口径，实际资金执行必须另做风控。本次只收录，没有部署、接账户或运行策略。
+
+## X2Strategy — 论文到可回测策略的自动化管线（LLM 提取 + 确定性验证）
+
+| 字段 | 信息 |
+| --- | --- |
+| 上游 | [ALAGENT-HKU/x2strategy](https://github.com/ALAGENT-HKU/x2strategy)（香港大学 ALAGENT 团队） |
+| 官网/文档 | 仓库内 `README.md` / `README_CN.md`、`docs/ARCHITECTURE.md`、`SKILL.md`、`references/`（7 篇从 Backtrader 源码验证的 API 文档） |
+| 许可证 | **未声明任何许可证**：仓库没有 LICENSE 文件，GitHub API 的 `license` 字段为 null，按默认规则保留所有权利。阅读与个人试用可，**商用、二次分发、并入自家产品或服务都需先取得作者授权**；收录 ≠ 获得再使用权 |
+| 技术形态 | Python（`pyproject.toml` + `requirements.txt`），依赖 PyMuPDF / python-docx / LiteLLM / Backtrader；六阶段管线 + 两个模块（paper2spec、spec2code）；同时是 Agent Skill（agentskills.io 标准，注册 `/x2strategy`）与 CLI 脚本集 |
+| 收录快照 | 2026-11-17；283 stars、46 forks；未归档；开放 issue 1；默认分支 `main`；72 个文件 |
+| 上游维护快照 | 创建 2026-03-26；最近推送 **2026-06-12**（约 5 个月无新提交）；无 Release |
+
+### 是什么
+
+把量化研究文档（PDF 论文、Markdown 草稿、DOCX 研报、纯文本）自动转成结构化策略规格、可执行的 Backtrader 代码、回测结果与偏差诊断报告的工具。它的定位不是“让模型随手写个策略”，而是把中间产物做成**可审计的结构**：规格是 JSON、有 schema、每步产物落盘。
+
+### 核心能力
+
+- **六阶段管线**：解析（格式自适应）→ 提取（5 层 LLM）→ 生成（StrategySpec → Backtrader 代码）→ 验证（AST 语法 + Backtrader 结构 + 指标存在性）→ 回测（子进程、超时控制，提取夏普/最大回撤/总收益）→ 诊断（与论文报告值对比、标记偏差）。
+- **5 层提取**：L0 检测论文含几个独立策略 → L1 元数据与数据需求 → L2 指标公式与参数 → L3 信号逻辑 → L4 执行计划与风控。单策略约 8 次模型调用；多策略时策略间并行。
+- **反幻觉设计**：`references/` 的 API 文档取自源码而非模型记忆；提取严格对齐原文（grounded extraction）；歧义处强制标记 `needs human review`；`operator_pitfall_index.md` 收录公式层面易误解的陷阱。
+- **StrategySpec 作为中间层**：生成代码前可人工审阅信号逻辑与参数，同一份规格理论上可换回测引擎。
+- **端到端样例**：`examples/upsa/` 内含 Kelly、Malamud、Pourmohammadi、Trojani 2025 NBER 论文与全套产物（content / spec / 实现 / 诊断）。
+- 成本约 **¥0.7/篇**（README 推荐 DeepSeek，兼容任意 LiteLLM 供应商）。
+
+### 适合什么
+
+- 想批量复现文献里的策略、先快速判断“值不值得深挖”的研究者。
+- 需要把论文规格与实现分离、便于团队审阅（而不是直接信任一段生成的代码）的工程流程。
+- 做文献综述时先用 `paper2spec/search.py` 找论文，再进管线。
+
+### 推荐接入方式
+
+1. 先读 `README_CN.md` 与 `docs/ARCHITECTURE.md`，确认六阶段与你现有研究管线如何衔接。
+2. 以 Agent Skill 方式试用：克隆到 Agent 的 skill 目录，由 Agent 发现 `SKILL.md` 后以 `/x2strategy` 调用（支持 VS Code Copilot、Claude Code 等兼容平台；README 另给 OpenClaw 的 `openclaw skills install patrick-lew/x2strategy`）。
+3. 要接进自有管线就走 CLI：`scripts/parse.py` → `extract.py` → 生成 → `validate_strategy.py` → 回测 → `analyze.py`。
+4. 先跑 `examples/upsa/` 的样例，确认你的模型与依赖版本能复现出与仓库内诊断一致的结果，再上自己的论文。
+
+### 安全、许可与能力边界
+
+- **无许可证是第一条边界**：没有 LICENSE 不等于“开源随便用”。商用、对外分发、把代码并进产品前必须联系作者；企业内部长期依赖也应先取得书面许可，否则一旦作者主张权利，你的管线里就带着无法溯源的代码。
+- **论文内容会外发**：提取阶段通过 LiteLLM 调用所选模型供应商，论文全文（可能含未发表草稿、券商研报）会发送到该供应商。处理受限材料前先确认数据处理条款，或换成本地模型。
+- **LLM 提取不等于公式正确**：符号约定、非标准波动率定义、自定义因子都可能被误解；`operator_pitfall_index` 只覆盖已知陷阱。人工审阅 `StrategySpec` 是必需环节。
+- **诊断对比只能提示差异**：论文收益常基于特定样本期、成本假设或不可得数据，回测口径（复权、成本、成交假设）不同会产生“假偏差”或“假一致”，不能作为复现成功的证明。
+- **生成的策略不含交易成本与可成交性假设**：佣金、印花税、滑点、冲击成本、涨跌停与停牌不可成交都要自己补，否则回测收益不可信。
+- **维护活跃度低**：近 5 个月无提交、开放 issue 仅 1 个；长期使用需自备 fork 与版本锁定，别把研究流程建在一个停止更新的仓库上。
